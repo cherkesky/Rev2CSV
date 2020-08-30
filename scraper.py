@@ -21,7 +21,7 @@ driver.quit()
 
 
 # div:  classname - "gws-localreviews__general-reviews-block" # Block
-#     div:  #Review X 10
+#     + div:  #Review X 10
 #         <a>:  alt=<First Last> src=<link to user image>
 #         div: #Review
 #             div: #name
@@ -33,5 +33,5 @@ driver.quit()
 #                 div: 
 #         div: #Like
 #         div: #Response
-#    div
-#    div...
+#    + div...
+#    + div...
