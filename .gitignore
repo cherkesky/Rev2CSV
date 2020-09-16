@@ -1,1 +1,9 @@
+
+/env
+/__pycache__
+
+.DS_Store
+.vscode
 secret.py
+reviewdata.csv
+TEST.csv
