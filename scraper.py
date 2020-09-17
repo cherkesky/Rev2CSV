@@ -5,8 +5,10 @@ import time
 from datetime import datetime, timedelta
 import csv
 
+temp_pid = input("Enter PID: ")
+if len(temp_pid)!=0:
+  pid=temp_pid
 
-pid = input("Enter PID: ")
 
 url = f'https://search.google.com/local/reviews?placeid={pid}'
 driver = webdriver.Chrome(ChromeDriverManager().install())
