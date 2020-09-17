@@ -1,7 +1,9 @@
 
 /env
 /__pycache__
-
+/build
+/dist
+scraper.spec
 .DS_Store
 .vscode
 secret.py
