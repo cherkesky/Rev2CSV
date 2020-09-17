@@ -90,7 +90,7 @@ for div in divs:
   saved_single_review['tags'] = ''
   saved_reviews.append(saved_single_review)
 
-with open('TEST.csv', mode='w') as csv_file:
+with open('reviewdata.csv', mode='w') as csv_file:
   fieldnames = ['id','pageid','pagename','created_time','created_time_stamp','reviewer_name','reviewer_id','rating','review_text'
   ,'hide','review_length','type','userpic','from_url','recommendation_type','userpiclocal','reviewer_email',
   'company_name','company_title','company_url','review_length_char','userpic_small','from_name','from_logo',
