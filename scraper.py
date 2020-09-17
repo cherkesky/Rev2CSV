@@ -1,6 +1,5 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-from secret import pid
 import time
 from datetime import datetime, timedelta
 import csv
@@ -8,7 +7,15 @@ import csv
 temp_pid = input("Enter PID: ")
 if len(temp_pid)!=0:
   pid=temp_pid
+else:
+    pid ='ChIJN1t_tDeuEmsRUsoyG83frY4'
+    print ("******************* DEMO RUN *******************")
+    print ("your PID can be found using:")
+    print ("https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder")
+    print ("************************************************")
 
+
+    time.sleep(2)
 
 url = f'https://search.google.com/local/reviews?placeid={pid}'
 driver = webdriver.Chrome(ChromeDriverManager().install())
@@ -26,7 +33,7 @@ reviewsDialog = driver.find_element_by_class_name('gws-localreviews__general-rev
 divs = reviewsDialog.find_elements_by_css_selector( "div[class*='gws-localreviews__google-review']" )
 
 print ("*********************************************************")
-print (business_name)
+print (f'{business_name} - PID: {pid}')
 print ("*********************************************************\n")
 
 for div in divs:
@@ -110,6 +117,10 @@ with open('reviewdata.csv', mode='w') as csv_file:
   writer.writeheader()
   for review in saved_reviews:
    writer.writerow(review)
+
+print ("\n*********************************************************************")
+print ("A file name 'reviewdata.csv' has been created in your user directory")
+print ("***********************************************************************")
 
 driver.quit()
 
