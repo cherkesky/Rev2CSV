@@ -44,7 +44,12 @@ for div in divs:
         saved_review_text = span.text
         print (f'Review: {saved_review_text}')
     except: pass
-  
+
+  stars_block = div.find_element_by_tag_name('g-review-stars')
+  stars_span = stars_block.find_element_by_xpath(".//span")
+  stars = stars_span.get_attribute("aria-label").split(".")[0].split(" ")[1]
+  print (f'Stars: {stars}')
+
   index += 1
   str_review_date =  str(datetime.now()-timedelta(days=index)).split(".")[0]
   stamp_review_date = datetime.timestamp(datetime.now()-timedelta(days=index))
@@ -56,7 +61,7 @@ for div in divs:
   saved_single_review['created_time_stamp'] = stamp_review_date
   saved_single_review['reviewer_name'] = img_alt
   saved_single_review['reviewer_id'] = reviewer_id
-  saved_single_review['rating'] = '5'
+  saved_single_review['rating'] = stars
   saved_single_review['review_text'] = saved_review_text
   saved_single_review['hide'] = ''
   saved_single_review['review_length'] = str(len(saved_review_text.split()))
