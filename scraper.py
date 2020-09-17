@@ -2,8 +2,8 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from secret import pid
 import time
-import csv
 from datetime import datetime, timedelta
+import csv
 
 url = f'https://search.google.com/local/reviews?placeid={pid}'
 driver = webdriver.Chrome(ChromeDriverManager().install())
@@ -55,7 +55,7 @@ for div in divs:
   saved_single_review['rating'] = '5'
   saved_single_review['review_text'] = saved_review_text
   saved_single_review['hide'] = ''
-  saved_single_review['review_length'] = len(saved_review_text)
+  saved_single_review['review_length'] = str(len(saved_review_text.split()))
   saved_single_review['type'] = 'Google'
   saved_single_review['userpic'] = img_src
   saved_single_review['from_url'] = f'https://maps.google.com/?cid={cid}'
@@ -65,7 +65,7 @@ for div in divs:
   saved_single_review['company_name'] = ''
   saved_single_review['company_title'] = ''
   saved_single_review['company_url'] = ''
-  saved_single_review['review_length_char'] = len(saved_review_text)
+  saved_single_review['review_length_char'] = str(len(saved_review_text))
   saved_single_review['userpic_small'] = ''
   saved_single_review['from_name'] = ''
   saved_single_review['from_logo'] = ''
@@ -85,10 +85,8 @@ for div in divs:
   saved_single_review['sort_weight'] = '0'
   saved_single_review['tags'] = ''
   saved_reviews.append(saved_single_review)
-  # print ("REVIEW DICT", saved_single_review)
 
 with open('TEST.csv', mode='w') as csv_file:
-  # fieldnames = ['id', 'name', 'pic', 'review']
   fieldnames = ['id','pageid','pagename','created_time','created_time_stamp','reviewer_name','reviewer_id','rating','review_text'
   ,'hide','review_length','type','userpic','from_url','recommendation_type','userpiclocal','reviewer_email',
   'company_name','company_title','company_url','review_length_char','userpic_small','from_name','from_logo',
@@ -100,8 +98,6 @@ with open('TEST.csv', mode='w') as csv_file:
    writer.writerow(review)
 
 driver.quit()
-
-#'id','pageid','pagename','created_time','created_time_stamp','reviewer_name','reviewer_id','rating','review_text','hide','review_length','type','userpic','from_url','recommendation_type','userpiclocal','reviewer_email','company_name','company_title','company_url','review_length_char','userpic_small','from_name','from_logo','from_url_review','review_title','categories','posts','consent','hidestars','miscpic','location','verified_order','language_code','unique_id','meta_data','owner_response','sort_weight','tags'
 
 # div:  classname - "gws-localreviews__general-reviews-block" # Block
 #     + div:  #Review X 10
