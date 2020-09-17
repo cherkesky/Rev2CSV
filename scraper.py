@@ -32,6 +32,10 @@ for div in divs:
         img_src = a.get_attribute("src")
         print (f'Name: {img_alt}') 
         print (f'Avatar: {img_src}') 
+  href = div.find_element_by_xpath(".//a")
+  reviewer_id = href.get_attribute("href").split("https://www.google.com/maps/contrib/")[1].split("?")[0]
+  print (f'Id: {reviewer_id}')
+
   spans = div.find_elements_by_tag_name('span')
   for span in spans:
     try:
@@ -51,7 +55,7 @@ for div in divs:
   saved_single_review['created_time'] = str_review_date
   saved_single_review['created_time_stamp'] = stamp_review_date
   saved_single_review['reviewer_name'] = img_alt
-  saved_single_review['reviewer_id'] = '110643751312770000000'
+  saved_single_review['reviewer_id'] = reviewer_id
   saved_single_review['rating'] = '5'
   saved_single_review['review_text'] = saved_review_text
   saved_single_review['hide'] = ''
