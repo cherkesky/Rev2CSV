@@ -4,23 +4,27 @@ import time
 from datetime import datetime, timedelta
 import csv
 
+def get_pid(referred_by='self'):
+  if referred_by=='self':
+    business = input("Enter Business Name: ")
+  url = f'https://www.google.com/search?q={business}'
+  pid_found = False
 
-business = input("Enter Business Name: ")
-url = f'https://www.google.com/search?q={business}'
-pid_found = False
-driver = webdriver.Chrome(ChromeDriverManager().install())
-driver.get(url)
-time.sleep(1)
+  driver = webdriver.Chrome(ChromeDriverManager().install())
+  driver.get(url)
+  time.sleep(1)
 
-aaa = driver.find_elements_by_tag_name( "a" )
+  aaa = driver.find_elements_by_tag_name( "a" )
 
-for a in aaa:
-  pid = a.get_attribute("data-pid")
-  if pid!=None:
-    print (pid)
-    pid_found=True
+  for a in aaa:
+    pid = a.get_attribute("data-pid")
+    if pid!=None:
+      print ("\nThe Business PID Is:",pid)
+      pid_found=True
 
-if pid_found == False:
-  print ("No Business Or Multiple Businesses Found - Try Adding A Location To Be More Specific")
+  if pid_found == False:
+    print ("No Business Or Multiple Businesses Found - Try Adding A Location To Be More Specific")
 
-driver.quit()
+  driver.quit()
+
+get_pid()
