@@ -4,7 +4,7 @@ import time
 from datetime import datetime, timedelta
 import csv
 
-def get_pid(referred_by='self'):
+def get_pid(referred_by='self', business=''):
   if referred_by=='self':
     business = input("Enter Business Name: ")
   url = f'https://www.google.com/search?q={business}'
@@ -26,5 +26,6 @@ def get_pid(referred_by='self'):
     print ("No Business Or Multiple Businesses Found - Try Adding A Location To Be More Specific")
 
   driver.quit()
+  return pid
 
 get_pid()
