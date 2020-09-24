@@ -21,11 +21,11 @@ def get_pid(referred_by='self', business=''):
     if pid!=None:
       print ("\nThe Business PID Is:",pid)
       pid_found=True
+      break
 
   if pid_found == False:
     print ("No Business Or Multiple Businesses Found - Try Adding A Location To Be More Specific")
+  
 
   driver.quit()
   return pid
-
-get_pid()
