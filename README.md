@@ -10,7 +10,7 @@ Can't get Google Places API to return a review list?
 }
 
 ## Details
-Rev2CSV is a simple command line tool that accept a Google Place ID (PID) and scrape your business listing for published review (latest 10) and generate a CSV file that can be imported to many WordPress review plugins
+Rev2CSV is a simple command line tool that accept a Google Place ID (PID) and scrape your business listing for published review (latest 10) and generate a CSV file that can be imported by many WordPress review plugins
 
 <img src="https://github.com/cherkesky/Rev2CSV/blob/master/scraper.gif" height="400" width="800">
 <img src="https://github.com/cherkesky/Rev2CSV/blob/master/csv.png" height="400" width="800">
